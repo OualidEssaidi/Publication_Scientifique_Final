@@ -11,7 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/pub")
+@RequestMapping("/publication")
 public class PublicationController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class PublicationController {
         return this.publicationService.getPubById(id);
     }
 
-    @GetMapping("/name/{name}")
+    @GetMapping("/title/{title}")
     public Publication getOneByTitle(@PathVariable String title){
         return this.publicationService.getPubByTitle(title);
     }
