@@ -7,10 +7,10 @@ CREATE TABLE publication (
   publicher VARCHAR(250) NOT NULL,
   annee VARCHAR(250) NOT NULL,
   URL_ISBN VARCHAR(250) NOT NULL,
-  volume VARCHAR(250) DEFAULT '',
-  maison_edit VARCHAR(250) DEFAULT '',
-  ifact VARCHAR(250) DEFAULT '',
-  Q VARCHAR(250) DEFAULT ''
+  volume VARCHAR(250) DEFAULT '_',
+  maison_edit VARCHAR(250) DEFAULT '_',
+  ifact VARCHAR(250) DEFAULT '_',
+  Q VARCHAR(250) DEFAULT '_ '
 );
 
 INSERT INTO publication(type, title, publicher, annee, URL_ISBN, ifact, Q) VALUES

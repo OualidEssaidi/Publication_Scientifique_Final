@@ -3,10 +3,8 @@ package com.ucd.Publication.controller;
 import com.ucd.Publication.model.Publication;
 import com.ucd.Publication.service.PublicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.net.URI;
 
@@ -17,7 +15,7 @@ public class PublicationController {
     @Autowired
     private PublicationService publicationService;
 
-    @GetMapping("/all")
+    /*@GetMapping("/all")
     public Iterable<Publication> getAll(){
             Iterable<Publication> liste = this.publicationService.getAllPubs();
         return liste;
@@ -31,23 +29,15 @@ public class PublicationController {
     @GetMapping("/title/{title}")
     public Publication getOneByTitle(@PathVariable String title){
         return this.publicationService.getPubByTitle(title);
+    }*/
+
+    @PostMapping("/add")
+    public ModelAndView addCustomer(@ModelAttribute Publication publication){
+        Publication Pub = this.publicationService.addPub(publication);
+        return new ModelAndView("redirect:/publication");
     }
 
-    @PutMapping("/add")
-    public ResponseEntity<Void> addCustomer(@RequestBody Publication newPub){
-        Publication Pub = this.publicationService.addPub(newPub);
-        if(Pub == null) return ResponseEntity.noContent().build();
-
-        URI location = ServletUriComponentsBuilder
-                .fromPath("/publication")
-                .path("/id/{id}")
-                .buildAndExpand(Pub.getId())
-                .toUri();
-
-        return ResponseEntity.created(location).build();
-    }
-
-    @PatchMapping("/update")
+    /*@PatchMapping("/update")
     public ResponseEntity<Void> updateUser(@RequestBody Publication Pub){
         Publication publication = this.publicationService.updatePub(Pub);
         if(publication == null) return ResponseEntity.noContent().build();
@@ -59,5 +49,11 @@ public class PublicationController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }*/
+
+    @DeleteMapping("/delete/{id}")
+    public ModelAndView deletePublication(@PathVariable long id){
+        this.publicationService.deletePub(id);
+        return new ModelAndView("redirect:/publication");
     }
 }
