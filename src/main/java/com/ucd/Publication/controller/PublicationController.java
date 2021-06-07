@@ -37,6 +37,13 @@ public class PublicationController {
         return new ModelAndView("redirect:/publication");
     }
 
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteEmployee(@PathVariable("id") final int id) {
+        publicationService.deletePub(id);
+        return new ModelAndView("redirect:/publication");
+    }
+
     /*@PatchMapping("/update")
     public ResponseEntity<Void> updateUser(@RequestBody Publication Pub){
         Publication publication = this.publicationService.updatePub(Pub);
@@ -50,10 +57,4 @@ public class PublicationController {
 
         return ResponseEntity.created(location).build();
     }*/
-
-    @DeleteMapping("/delete/{id}")
-    public ModelAndView deletePublication(@PathVariable long id){
-        this.publicationService.deletePub(id);
-        return new ModelAndView("redirect:/publication");
-    }
 }
