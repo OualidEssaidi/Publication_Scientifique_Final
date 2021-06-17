@@ -1,7 +1,7 @@
 # Production-Scientifique
 
 ## Mini projet qui affiche/ajoute/modifie/supprimer les information d'une publication de production scientifique
-## application réalise avec thymeleaf pour la partie de front end.
+Partie front end avec thymeleaf. 
 
 ### Pages:
           /            : Page d'accueil.
